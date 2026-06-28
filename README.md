@@ -1,6 +1,6 @@
 # HireCraft
 
-**AI-powered job application toolkit.** Tailored resume PDFs, ATS-safe exports, cover letters, and recruiter icebreakers, all driven by a single master resume and a Claude Code slash command.
+**AI-powered job application toolkit.** Tailored resume PDFs, ATS-safe exports, cover letters, recruiter icebreakers, and interview prep, all driven by a single master resume.
 
 Built and used during a real healthcare IT job search. Every script here earned its place.
 
@@ -10,13 +10,16 @@ Built and used during a real healthcare IT job search. Every script here earned 
 
 You paste a job description. HireCraft handles the rest:
 
-- Parses the posting and scores your fit against your master resume
+- Verifies the posting is live before you invest time in it
+- Parses the JD and scores your fit against your master resume
+- Walks through each skill gap and captures your honest comfort level
 - Writes a tailored resume (two-column designed PDF + single-column ATS PDF)
 - Drafts a cover letter in your voice
 - Generates recruiter icebreaker options based on real commonalities
+- Builds an interview prep brief with likely themes, STAR prompts, and smart questions
 - Tracks the application in your folder structure
 
-One command. One consistent output format. No manual copy-paste between tools.
+One consistent output format. No manual copy-paste between tools.
 
 ---
 
@@ -38,7 +41,7 @@ Use career-ops to find and filter. Use HireCraft to act.
 - Microsoft Word installed
 - Microsoft Edge installed
 - A master DOCX resume template (two-column layout where the right sidebar stays fixed and the left column gets replaced per role)
-- [Claude Code](https://claude.ai/code) for the `/process-job` slash command pipeline
+- [Claude Code](https://claude.ai/code) for the `/process-job` slash command pipeline (optional: wizard works without it and prints prompts for manual use)
 
 Install Python dependencies:
 ```
@@ -121,8 +124,9 @@ python scripts/apply.py --init CompanyName https://posting-url
 
 ```
 hirecraft/
-├── config.example.json              # Copy to config.json and fill in
-├── master_resume.example.json       # Copy to master_resume.json and fill in
+├── config.example.json              # Copy to config.json and fill in (wizard does this on first run)
+├── master_resume.example.json       # Copy to master_resume.json and fill in (wizard does this on first run)
+├── requirements.txt                 # pip install -r requirements.txt
 ├── HONESTY.md                       # The no-fabrication system and apply-direct guidance
 ├── WORKFLOW.md                      # End-to-end pipeline diagrams
 ├── scripts/

@@ -22,6 +22,7 @@ graph TB
     end
 
     subgraph PIPELINE ["HireCraft Pipeline"]
+        WZ["wizard.py\nInteractive entry point\nJob processing\nGap ratings, icebreaker\nInterview prep, tracking"]
         OC["OpenCode\nFirst-pass AI\nDraft + validate\nLower token cost"]
         CL["Claude Code\nSecond-pass AI\nFact-check + finalize\nHonesty enforcer"]
         HC["HireCraft Scripts\napply.py\nresume_builder.py\ncover_letter_builder.py\nlinkedin_icebreaker.py"]
@@ -34,10 +35,11 @@ graph TB
         LOG["Obsidian note updated\nApplication log updated"]
     end
 
-    MAN --> OC
-    CAR --> OC
-    MR --> OC
-    OB --> OC
+    MAN --> WZ
+    CAR --> WZ
+    MR --> WZ
+    OB --> WZ
+    WZ --> OC
     OC --> CL
     CL --> HC
     HC --> PDF
@@ -69,7 +71,7 @@ flowchart TD
 
     F --> G{New skills\nin this JD?}
 
-    G -->|Yes| H["OpenCode prompts:\nHave you done this?\nComfort level 0–4?"]
+    G -->|Yes| H["wizard.py prompts:\nHave you done this?\nComfort level 0–4?"]
 
     H --> I{Response}
     I -->|Level 2-4\nsome experience| J["Add to latent_skills\nin master_resume.json"]
