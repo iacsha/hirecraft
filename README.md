@@ -113,17 +113,25 @@ python scripts/apply.py --init CompanyName https://posting-url
 
 ```
 hirecraft/
-├── config.example.json          # Copy to config.json and fill in
-├── master_resume.example.json   # Copy to master_resume.json and fill in
+├── config.example.json              # Copy to config.json and fill in
+├── master_resume.example.json       # Copy to master_resume.json and fill in
+├── HONESTY.md                       # The no-fabrication system and apply-direct guidance
+├── WORKFLOW.md                      # End-to-end pipeline diagrams
 ├── scripts/
-│   ├── apply.py                 # Unified pipeline CLI
-│   ├── resume_builder.py        # Two-column designed resume (DOCX + PDF)
-│   ├── resume_builder_ats.py    # Single-column ATS-safe resume (PDF)
-│   ├── cover_letter_builder.py  # Cover letter PDF
-│   └── linkedin_icebreaker.py   # Recruiter outreach generator
+│   ├── apply.py                     # Unified pipeline CLI
+│   ├── resume_builder.py            # Two-column designed resume (DOCX + PDF)
+│   ├── resume_builder_ats.py        # Single-column ATS-safe resume (PDF)
+│   ├── cover_letter_builder.py      # Cover letter PDF
+│   └── linkedin_icebreaker.py       # Recruiter outreach generator
+├── templates/
+│   └── answer-bank.example.md       # Reusable answers to recurring screening questions
+├── obsidian/
+│   └── company-note-template.md     # Obsidian note template for tracking applications
 └── .claude/
     └── commands/
-        └── process-job.md       # /process-job slash command
+        ├── process-job.md           # /process-job slash command
+        ├── build-master-resume.md   # /build-master-resume slash command
+        └── build-job-history.md     # /build-job-history slash command
 ```
 
 Per-company output (gitignored) lives in your `jobhunt_root`:
