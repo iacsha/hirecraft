@@ -45,7 +45,7 @@ graph TB
     HC --> PDF
     HC --> CVR
     HC --> ICE
-    CL --> LOG
+    OC --> LOG
     LOG --> OB
 ```
 
@@ -103,9 +103,9 @@ flowchart TD
 
     U --> V{Recruiter responds?}
 
-    V -->|Reply received| W["Claude: Update Obsidian\nCompany note, reply section\nSet follow_up_due"]
-    V -->|Interview booked| X["Claude: Create\nInterview prep doc\nCompany research brief\nSTAR story bank"]
-    V -->|No response\nafter ~1 week| Y["Claude: Draft\nFollow-up message"]
+    V -->|Reply received| W["OpenCode: Update Obsidian\nCompany note, reply section\nSet follow_up_due"]
+    V -->|Interview booked| X["OpenCode: Draft\nInterview prep doc\nCompany research brief\nSTAR story bank"]
+    V -->|No response\nafter ~1 week| Y["OpenCode: Draft\nFollow-up message"]
 
     W --> Z["Update application log\nstatus / date / notes"]
     X --> Z
@@ -125,11 +125,11 @@ flowchart LR
     JD["Job Description"] --> OC
 
     subgraph OC_BOX ["OpenCode: First Pass"]
-        OC["Parse JD\nMatch skills\nPrompt for gaps\nDraft resume content\nDraft cover letter\nDraft icebreaker"]
+        OC["Parse JD\nMatch skills\nDraft resume content\nDraft cover letter\nDraft icebreaker\nDraft follow-ups\nUpdate Obsidian notes"]
     end
 
     subgraph CL_BOX ["Claude Code: Second Pass"]
-        CL["Fact-check every claim\nagainst master_resume.json\nCatch fabricated details\nEnforce honesty constraints\nFinalize output\nUpdate Obsidian"]
+        CL["Fact-check every claim\nagainst master_resume.json\nCatch fabricated details\nEnforce honesty constraints\nFinalize output"]
     end
 
     subgraph OUT_BOX ["Output"]
@@ -141,11 +141,11 @@ flowchart LR
     end
 
     OC -->|Draft package| CL
+    OC -->|Always| O
     CL -->|Approved| R
     CL -->|Approved| A
     CL -->|Approved| C
     CL -->|Approved| I
-    CL -->|Always| O
 
     CL -->|Flagged issue| FLAG["[REVIEW] / [REWRITE]\nreturned to user\nbefore anything is sent"]
 ```
@@ -161,4 +161,4 @@ flowchart LR
 | Honesty | Honesty constraints in master_resume.json are enforced on every Claude pass |
 | Nothing fabricated | Named entities must trace to master or get cut |
 | Nothing sent without review | [REVIEW] flags stop the pipeline before submission |
-| Application tracking | Every state change updates Obsidian in the same turn |
+| Application tracking | OpenCode updates Obsidian on every state change; no manual logging |
