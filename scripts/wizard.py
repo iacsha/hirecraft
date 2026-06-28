@@ -7,6 +7,7 @@ Run: python scripts/wizard.py
 
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -51,6 +52,13 @@ def load_master_resume() -> dict:
 def save_config(config: dict) -> None:
     with open(CONFIG_PATH, "w") as f:
         json.dump(config, f, indent=2)
+
+
+def safe_slug(name: str) -> str:
+    """Strip path separators and unsafe chars from any user-supplied name used in file paths."""
+    slug = name.lower().replace(" ", "_")
+    slug = re.sub(r"[^\w\-]", "", slug)
+    return slug or "unknown"
 
 
 # ── AI integration ────────────────────────────────────────────────────────────
@@ -111,6 +119,9 @@ def check_posting_liveness(url: str) -> str:
     """Returns 'live', 'dead', or 'unknown'."""
     import urllib.request
     import urllib.error
+
+    if not url.startswith(("http://", "https://")):
+        return "unknown"
 
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -422,7 +433,7 @@ Provide 2 short options, numbered."""
 
     out_dir = REPO_ROOT / "working" / "icebreaker_outputs"
     out_dir.mkdir(parents=True, exist_ok=True)
-    slug = company.lower().replace(" ", "_")
+    slug = safe_slug(company)
     out_file = out_dir / f"{slug}.txt"
     out_file.write_text(
         f"Company: {company}\nRole: {position}\n"
@@ -499,7 +510,7 @@ Keep it tight. This is a prep card, not an essay."""
 
     out_dir = REPO_ROOT / "working" / "interview_prep"
     out_dir.mkdir(parents=True, exist_ok=True)
-    slug = company.lower().replace(" ", "_")
+    slug = safe_slug(company)
     out_file = out_dir / f"{slug}_prep.txt"
     out_file.write_text(
         f"Company: {company}\nRole: {position}\n"
