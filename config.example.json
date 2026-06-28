@@ -1,0 +1,14 @@
+{
+  "name": "Your Full Name",
+  "name_slug": "Your-Name",
+  "email": "you@example.com",
+  "phone": "(555) 555-5555",
+  "linkedin_url": "https://www.linkedin.com/in/yourprofile",
+  "linkedin_display": "linkedin.com/in/yourprofile",
+  "location": "City, ST",
+  "jobhunt_root": "C:\\Path\\To\\Your\\JobHunt",
+  "resume_template": "YourName_Resume.docx",
+  "years_experience": "X",
+  "current_company": "Your Most Recent Employer",
+  "target_roles": "Solutions Architect / Integration Engineer"
+}

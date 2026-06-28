@@ -1,0 +1,6 @@
+config.json
+master_resume.json
+job_history.json
+working/
+*.pdf
+*.docx
