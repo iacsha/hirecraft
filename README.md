@@ -1,6 +1,6 @@
 # HireCraft
 
-**AI-powered job application toolkit.** Tailored resume PDFs, ATS-safe exports, cover letters, and recruiter icebreakers — all driven by a single master resume and a Claude Code slash command.
+**AI-powered job application toolkit.** Tailored resume PDFs, ATS-safe exports, cover letters, and recruiter icebreakers, all driven by a single master resume and a Claude Code slash command.
 
 Built and used during a real healthcare IT job search. Every script here earned its place.
 
@@ -24,8 +24,8 @@ One command. One consistent output format. No manual copy-paste between tools.
 
 HireCraft pairs with **[career-ops](https://github.com/santifer/career-ops)** by santifer.
 
-- **career-ops** — discovers, evaluates, and scores job postings from portals (Greenhouse, Ashby, Lever, Workday). Feeds you leads.
-- **HireCraft** — executes the application once you decide to apply. Builds the documents, tracks the output, drafts the outreach.
+- **career-ops**: discovers, evaluates, and scores job postings from portals (Greenhouse, Ashby, Lever, Workday). Feeds you leads.
+- **HireCraft**: executes the application once you decide to apply. Builds the documents, tracks the output, drafts the outreach.
 
 Use career-ops to find and filter. Use HireCraft to act.
 
@@ -37,7 +37,7 @@ Use career-ops to find and filter. Use HireCraft to act.
 - Windows (resume_builder.py uses Word COM for PDF export; cover_letter_builder.py and resume_builder_ats.py use Microsoft Edge headless)
 - Microsoft Word installed
 - Microsoft Edge installed
-- A master DOCX resume template (two-column layout — the right sidebar stays fixed, the left column gets replaced per role)
+- A master DOCX resume template (two-column layout where the right sidebar stays fixed and the left column gets replaced per role)
 - [Claude Code](https://claude.ai/code) for the `/process-job` slash command pipeline
 
 Install Python dependencies:
@@ -65,7 +65,7 @@ Edit `config.json` with your name, contact info, and paths.
 ```bash
 cp master_resume.example.json master_resume.json
 ```
-Fill in your real experience, skills, certifications, and interests. This is your single source of truth — all scripts read from it.
+Fill in your real experience, skills, certifications, and interests. This is your single source of truth; all scripts read from it.
 
 **4. Add your resume template**
 
@@ -145,11 +145,11 @@ Per-company output (gitignored) lives in your `jobhunt_root`:
 
 HireCraft was built alongside some excellent tools. Credit where it's due:
 
-- **[career-ops](https://github.com/santifer/career-ops)** by [santifer](https://santifer.io) — the job pipeline engine that feeds this toolkit leads. If you're not using it, start there first.
-- **[Claude Code](https://claude.ai/code)** — AI review, resume drafting, and the `/process-job` pipeline backbone.
-- **[OpenCode](https://opencode.ai)** — AI-assisted first-draft generation throughout the search.
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** — supplemental research and cross-checking.
-- **[Obsidian](https://obsidian.md)** — application tracking vault that sits alongside this toolkit.
+- **[career-ops](https://github.com/santifer/career-ops)** by [santifer](https://santifer.io): the job pipeline engine that feeds this toolkit leads. If you're not using it, start there first.
+- **[Claude Code](https://claude.ai/code)**: AI review, resume drafting, and the `/process-job` pipeline backbone.
+- **[OpenCode](https://opencode.ai)**: AI-assisted first-draft generation throughout the search.
+- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)**: supplemental research and cross-checking.
+- **[Obsidian](https://obsidian.md)**: application tracking vault that sits alongside this toolkit.
 
 ---
 
