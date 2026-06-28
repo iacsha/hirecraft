@@ -42,7 +42,7 @@ Use career-ops to find and filter. Use HireCraft to act.
 
 Install Python dependencies:
 ```
-pip install lxml pywin32
+pip install -r requirements.txt
 ```
 
 ---
@@ -75,7 +75,15 @@ Place your two-column DOCX template in your `jobhunt_root` folder and set `resum
 
 ## Usage
 
-### Slash command (recommended)
+### Interactive wizard (recommended starting point)
+
+```bash
+python scripts/wizard.py
+```
+
+A terminal menu that walks through the full pipeline: job processing, gap analysis, skill comfort ratings, document builds, recruiter icebreaker, interview prep, and application tracking. Works without Claude Code installed; it prints AI prompts for manual use when the CLI is not available.
+
+### Slash command (Claude Code)
 
 From Claude Code, inside this folder:
 
@@ -83,7 +91,7 @@ From Claude Code, inside this folder:
 /process-job
 ```
 
-Then paste a job description. The pipeline walks through parsing, gap analysis, cover letter, resume generation, and output saving.
+Paste a job description. The pipeline walks through parsing, gap analysis, cover letter, resume generation, and output saving.
 
 ### Scripts directly
 
@@ -118,6 +126,7 @@ hirecraft/
 ├── HONESTY.md                       # The no-fabrication system and apply-direct guidance
 ├── WORKFLOW.md                      # End-to-end pipeline diagrams
 ├── scripts/
+│   ├── wizard.py                    # Interactive terminal wizard (start here)
 │   ├── apply.py                     # Unified pipeline CLI
 │   ├── resume_builder.py            # Two-column designed resume (DOCX + PDF)
 │   ├── resume_builder_ats.py        # Single-column ATS-safe resume (PDF)
